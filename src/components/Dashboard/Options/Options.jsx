@@ -1,0 +1,17 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './style.css'
+
+const Options = () => {
+  return (
+    <div className='w-[30%] m-auto'>
+        <div className='rounded-[30px] px-10 py-4 align-center flex justify-between shadow-xl'>
+            <Link to='/dashboard/internship' className='options hover:text-blue-500 focus:text-blue-500'>Internship</Link>
+            <Link to='/dashboard/job' className='options hover:text-blue-500 focus:text-blue-500'>Jobs</Link>
+            <Link to='/dashboard/project' className='options hover:text-blue-500 focus:text-blue-500'>Projects</Link>
+        </div>
+    </div>
+  )
+}
+
+export default Options
