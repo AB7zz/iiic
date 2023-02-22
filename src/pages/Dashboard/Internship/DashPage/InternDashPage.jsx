@@ -4,12 +4,26 @@ import InternButtons from '../../../../components/Dashboard/Buttons/InternButton
 import Company from '../../../../components/Dashboard/Company/Company'
 import Navbar from '../../../../components/Dashboard/Navbar/Navbar'
 import Options from '../../../../components/Dashboard/Options/Options'
+import axios from 'axios'
+
+const url = 'https://iiic-backend.herokuapp.com'
 
 const InternDashPage = () => {
   React.useEffect(() =>{
     if(!localStorage.getItem('user')){
       window.location.replace('/login')
     }
+    const checkIfAdmin = async() =>{
+      const res = await axios.get(`${url}/api/checkAdmin`,{
+          headers: {
+              Authorization: localStorage.getItem('user')
+          }
+      })
+      if(res.data.status == true){
+          window.location.replace('/admin')
+      }
+    }
+    checkIfAdmin()
   }, [])
   return (
     <>

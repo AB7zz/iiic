@@ -20,6 +20,7 @@ const Status = () => {
                 <td>{value.desc}</td>
                 <td>{value.title}</td>
                 {value.verified ? <td className='text-green-500 font-semibold'>Verified</td> : <td className='text-red-500 font-semibold'>Not Verified</td>}
+                {value.recruited ? <td className='text-green-500 font-semibold'>Recruited</td> : <td className='text-red-500 font-semibold'>Not Recruited</td>}
             </tr>
         )
       }
@@ -37,6 +38,7 @@ const Status = () => {
                             <th>Post Description</th>
                             <th>Category</th>
                             <th>Verification Status</th>
+                            <th>Recruitment Status</th>
                         </tr>
                     </thead>
                     <tbody>

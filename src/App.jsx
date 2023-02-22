@@ -20,6 +20,8 @@ import ProjectReportPage from './pages/Dashboard/Project/ReportPage/ProjectRepor
 import JobReportPage from './pages/Dashboard/Job/ReportPage/JobReportPage.jsx'
 import Successful from './components/Dashboard/Upload/Successful/Successful'
 
+import AdminPage from './pages/Admin/AdminPage'
+
 function App() {
   return (
     <div>
@@ -59,6 +61,7 @@ function App() {
           {/* Reports  */}
 
 
+          <Route path='/admin' element={<AdminPage/>} />
 
         </Routes>
       </BrowserRouter>

@@ -50,8 +50,31 @@ const Upload = () => {
                 <input name='skills' onChange={setUploadChange} type="text" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3' placeholder='Enter Skills' />
             </div>
             <div className='flex flex-col mb-5'>
-                <label className='text-[#A0A2A4] ' htmlFor="">Tags</label>
-                <input name='tags' onChange={setUploadChange} type="text" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3' placeholder='Enter Tags' />
+                <label className='text-[#A0A2A4] ' htmlFor="">How many interns from each department?</label>
+                <div className='flex mb-5'>
+                    <input name='cs' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/4 mr-3'/>
+                    <p>from Computer Science</p>
+                </div>
+                <div className='flex mb-5'>
+                    <input name='it' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/4 mr-3'/>
+                    <p>from Information Technology</p>
+                </div>
+                <div className='flex mb-5'>
+                    <input name='eee' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/4 mr-3'/>
+                    <p>from Electrical Engineering</p>
+                </div>
+                <div className='flex mb-5'>
+                    <input name='ec' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/4 mr-3'/>
+                    <p>from Electrnoics & Communication</p>
+                </div>
+                <div className='flex mb-5'>
+                    <input name='sf' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/4 mr-3'/>
+                    <p>from Safety & Fire Engineering</p>
+                </div>
+                <div className='flex mb-5'>
+                    <input name='mec' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/4 mr-3'/>
+                    <p>from Mechanical Engineering</p>
+                </div>
             </div>
             
             
@@ -64,25 +87,25 @@ const Upload = () => {
             <div className='flex flex-col mb-5'>
                 <label className='text-[#A0A2A4] ' htmlFor="">Duration</label>
                 <select name="duration" onChange={setUploadChange} id="" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3'>
-                    <option>Select Option</option>
-                    <option></option>
-                    <option></option>
+                    <option value='2 months'>2 months</option>
+                    <option value='4 months'>4 months</option>
+                    <option value='6 months'>6 months</option>
                 </select>
             </div>
             <div className='flex flex-col mb-5'>
                 <label className='text-[#A0A2A4] ' htmlFor="">Remote Work Policy</label>
                 <select name="workpolicy" onChange={setUploadChange} id="" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3'>
-                    <option>Select Option</option>
-                    <option></option>
-                    <option></option>
+                    <option value='On site'>On site</option>
+                    <option value='Remote'>Remote</option>
+                    <option value='Hybrid'>Hybrid</option>
                 </select>
             </div>
             <div className='flex flex-col mb-5'>
                 <label className='text-[#A0A2A4] ' htmlFor="">Experience Required</label>
                 <select name="experience" onChange={setUploadChange} id="" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3'>
-                    <option>Select Option</option>
-                    <option></option>
-                    <option></option>
+                    <option value=''>No Experience</option>
+                    <option value='1+ years'>1+ years</option>
+                    <option value='2+ years'>2+ years</option>
                 </select>
             </div>
             <div className='flex flex-col mb-5'>
