@@ -4,7 +4,7 @@ import Upload from '../../../../components/Dashboard/Upload/InternUpload/Upload'
 
 const UploadPage = () => {
   React.useEffect(() =>{
-    if(!localStorage.getItem('user')){
+    if(!sessionStorage.getItem('user')){
       window.location.replace('/login')
     }
   }, [])

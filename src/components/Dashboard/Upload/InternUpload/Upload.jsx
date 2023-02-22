@@ -1,11 +1,11 @@
 import React from 'react'
-import companyLogo from '../../../../assets/company-logo.png'
 import axios from 'axios'
-
+import { CompanyContext } from '../../Context/CompanyContextProvider'
 const url = 'https://iiic-backend.herokuapp.com'
 //const url = 'http://localhost:5000'
 
 const Upload = () => {
+    const {logo} = React.useContext(CompanyContext)
     const [upload, setUpload] = React.useState()
     const setUploadChange = (e) => {
         setUpload(prevState => ({
@@ -19,7 +19,7 @@ const Upload = () => {
         try{
             const res = await axios.post(`${url}/api/uploadIntern`, upload, {
                 headers: {
-                    Authorization: localStorage.getItem('user'),
+                    Authorization: sessionStorage.getItem('user'),
                     "Content-Type": "application/json"
                 }
             })
@@ -34,7 +34,7 @@ const Upload = () => {
   return (
     <div className='grid grid-cols-3'>
         <div className='mt-40'>
-            <img className='w-[250px] m-auto' src={companyLogo} alt="company logo" />
+            <img className='w-[250px] m-auto' src={logo} alt="company logo" />
         </div>
         <div className='flex flex-col w-[80%]'>
             <h3 className='text-2xl text-[#16255D] font-semibold mb-3'>Please Fill Your Details</h3>
@@ -76,6 +76,10 @@ const Upload = () => {
                     <input name='mec' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/4 mr-3'/>
                     <p>from Mechanical Engineering</p>
                 </div>
+                <div className='flex mb-5'>
+                    <input name='ce' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/4 mr-3'/>
+                    <p>from Civil Engineering</p>
+                </div>
             </div>
             
             
@@ -88,7 +92,7 @@ const Upload = () => {
             <div className='flex flex-col mb-5'>
                 <label className='text-[#A0A2A4] ' htmlFor="">Duration</label>
                 <select name="duration" onChange={setUploadChange} id="" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3'>
-                    <option value='2 months'>2 months</option>
+                    <option value='2 months' selected>2 months</option>
                     <option value='4 months'>4 months</option>
                     <option value='6 months'>6 months</option>
                 </select>
@@ -96,24 +100,15 @@ const Upload = () => {
             <div className='flex flex-col mb-5'>
                 <label className='text-[#A0A2A4] ' htmlFor="">Remote Work Policy</label>
                 <select name="workpolicy" onChange={setUploadChange} id="" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3'>
-                    <option value='On site'>On site</option>
+                    <option value='On site' selected>On site</option>
                     <option value='Remote'>Remote</option>
                     <option value='Hybrid'>Hybrid</option>
-                </select>
-            </div>
-            <div className='flex flex-col mb-5'>
-                <label className='text-[#A0A2A4] ' htmlFor="">Experience Required</label>
-                <select name="experience" onChange={setUploadChange} id="" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3'>
-                    <option value=''>No Experience</option>
-                    <option value='1+ years'>1+ years</option>
-                    <option value='2+ years'>2+ years</option>
                 </select>
             </div>
             <div className='flex flex-col mb-5'>
                 <label className='text-[#A0A2A4] ' htmlFor="">Stipend (if any)</label>
                 <input name='stipend' onChange={setUploadChange} type="text" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3' placeholder='Enter Stipend' />
             </div>
-
             <button onClick={uploadForm} className='text-white bg-blue-500 px-10 py-3 text-center rounded-[12px]'>Submit for review</button>
         </div>
     </div>

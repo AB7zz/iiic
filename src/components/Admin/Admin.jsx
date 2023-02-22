@@ -10,7 +10,7 @@ const Admin = () => {
         const checkIfAdmin = async() => {
             const res = await axios.get(`${url}/api/checkAdmin`,{
                 headers: {
-                    Authorization: localStorage.getItem('user')
+                    Authorization: sessionStorage.getItem('user')
                 }
             })
             if(res.data.status == false){
@@ -20,7 +20,7 @@ const Admin = () => {
         const fetchPosts = async() => {
             const res = await axios.get(`${url}/api/getInternshipPosts`,{
                 headers:{
-                    Authorization: localStorage.getItem('user')
+                    Authorization: sessionStorage.getItem('user')
                 }
             })
             if(res.data.posts){
@@ -42,7 +42,7 @@ const Admin = () => {
                             console.log('this is called')
                             const res = await axios.post(`${url}/api/verifyPost`, post, {
                                 headers: {
-                                    Authorization: localStorage.getItem('user')
+                                    Authorization: sessionStorage.getItem('user')
                                 }
                             })
                             if(res.data.success == true){
@@ -59,9 +59,15 @@ const Admin = () => {
                         <p><span className='font-semibold'>Location:</span> {post.loc}</p>
                         <p><span className='font-semibold'>Duration:</span> {post.duration}</p>
                         <p><span className='font-semibold'>Remote Work Policy:</span> {post.workpolicy}</p>
-                        <p><span className='font-semibold'>Experience Required:</span> {post.experience}</p>
                         <p><span className='font-semibold'>Skills:</span> {post.skills}</p>
                         <p><span className='font-semibold'>Stipend:</span> {post.stipend}</p>
+                        {post.cs!=0 && <p><span className='font-semibold'>{post.cs}</span> interns required from CS</p> }
+                        {post.it!=0 && <p><span className='font-semibold'>{post.it}</span> interns required from IT</p> }
+                        {post.eee!=0 && <p><span className='font-semibold'>{post.eee}</span> interns required from EEE</p> }
+                        {post.ec!=0 && <p><span className='font-semibold'>{post.ec}</span> interns required from EC</p> }
+                        {post.mec!=0 && <p><span className='font-semibold'>{post.mec}</span> interns required from MEC</p> }
+                        {post.sf!=0 && <p><span className='font-semibold'>{post.sf}</span> interns required from SF</p> }
+                        {post.ce!=0 && <p><span className='font-semibold'>{post.ce}</span> interns required from CE</p> }
                         <div className='flex'>
                             {post.verified ? <button className='rounded-[15px] text-white bg-green-300 px-5 py-2 mt-4 mr-5'>Verified</button> : <button onClick={handleVerify} className='rounded-[15px] text-white bg-green-500 px-5 py-2 mt-4 hover:bg-green-300 mr-5'>Mark as verified</button>}
                             {post.recruited ? <button className='rounded-[15px] text-white bg-red-300 px-5 py-2 mt-4 mr-5'>Recruited</button> : <button className='rounded-[15px] text-white bg-red-500 px-5 py-2 mt-4 mr-5'>Not Recruited</button>}

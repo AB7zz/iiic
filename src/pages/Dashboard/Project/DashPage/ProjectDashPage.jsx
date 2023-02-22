@@ -7,7 +7,7 @@ import Options from '../../../../components/Dashboard/Options/Options'
 
 const ProjectDashPage = () => {
   React.useEffect(() =>{
-    if(!localStorage.getItem('user')){
+    if(!sessionStorage.getItem('user')){
       window.location.replace('/login')
     }
   }, [])

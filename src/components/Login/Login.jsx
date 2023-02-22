@@ -22,7 +22,7 @@ const Login = () => {
   const checkIfAdmin = async() =>{
     const res = await axios.get(`${url}/api/checkAdmin`,{
         headers: {
-            Authorization: localStorage.getItem('user')
+            Authorization: sessionStorage.getItem('user')
         }
     })
     if(res.data.status == true){
@@ -36,7 +36,7 @@ const Login = () => {
     signInWithEmailAndPassword(auth, account.email, account.pass)
     .then((userCredential) => {
         const user = userCredential.user;
-        localStorage.setItem('user', user.accessToken)
+        sessionStorage.setItem('user', user.accessToken)
         checkIfAdmin()
       })
       .catch((error) => {
@@ -47,7 +47,7 @@ const Login = () => {
       });                               
   }
   React.useEffect(() =>{
-    if(localStorage.getItem('user')){
+    if(sessionStorage.getItem('user')){
       window.location.replace('/dashboard/internship')
     }
     const firebaseConfig = {

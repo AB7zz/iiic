@@ -5,14 +5,14 @@ import cusatLogo from '../../assets/cusat-logo.png'
 import axios from 'axios'
 import {initializeApp} from 'firebase/app'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {ref, uploadBytes, getStorage} from 'firebase/storage'
+import {v4} from 'uuid'
 
 const url = 'https://iiic-backend.herokuapp.com'
 //const url = 'http://localhost:5000'
 
 const Register = () => {
-    if(localStorage.getItem('user')){
-        window.location.replace('/dashboard/internship')
-    }
+  const [logo, setLogo] = React.useState(null)
     React.useEffect(() =>{
         const firebaseConfig = {
           apiKey: "AIzaSyBAVeMwDYCI2sQ6ODZ0Mt7V9TgmkEqAyJQ",
@@ -43,6 +43,13 @@ const Register = () => {
     const submitRegister = (e) => {
         e.preventDefault()
         const auth = getAuth();
+        const storage = getStorage()
+        if(logo != null){
+          const imageRef = ref(storage, `${account.email}/logo.png`)
+          uploadBytes(imageRef, logo).then(() => {
+            console.log('Image uploaded')
+          })
+        }
         createUserWithEmailAndPassword(auth, account.email, account.pass)
             .then(async(userCredential) => {
                 const user = userCredential.user;
@@ -53,12 +60,13 @@ const Register = () => {
                     }
                 })
                 if(res.data.success == true){
-                    localStorage.setItem('user', user.accessToken)
-                    if(account.type === 'admin'){
-                      window.location.replace('/admin')
-                    }else{
-                      window.location.replace('/dashboard/internship')
-                    }
+                    // sessionStorage.setItem('user', user.accessToken)
+                    window.location.replace('/admin')
+                    // if(account.type === 'admin'){
+                    //   window.location.replace('/admin')
+                    // }else{
+                    //   window.location.replace('/dashboard/internship')
+                    // }
                 }
             })
             .catch((error) => {
@@ -69,7 +77,7 @@ const Register = () => {
     }
   return (
     <div className='py-10 px-5'>
-      <Link to='/' className='ml-auto py-5 px-4 text-white bg-[#0A043C] rounded-[15px] font-semibold'>Home <HomeIcon/> </Link>
+      <Link to='/admin' className='ml-auto py-5 px-4 text-white bg-[#0A043C] rounded-[15px] font-semibold'>Admin Panel <HomeIcon/> </Link>
       <div className='mt-20 grid grid-cols-2'>
         <div className='justify-self-center'>
             <img className='ml-20' src={cusatLogo} alt="cusat logo" />
@@ -94,12 +102,14 @@ const Register = () => {
             <label className='mb-3 text-2xl font-semibold' htmlFor="">Department</label>
             <select onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' name="dept" id="" required>
               <option value="">Select Option</option>
+              <option value="core">Core Admin</option>
               <option value="CS">CS</option>
               <option value="IT">IT</option>
               <option value="EEE">EEE</option>
               <option value="EC">EC</option>
               <option value="SF">SF</option>
               <option value="MEC">MEC</option>
+              <option value="CE">CE</option>
             </select>
                        
             <label className='mb-3 text-2xl font-semibold' htmlFor="">Name of Company</label>
@@ -115,8 +125,8 @@ const Register = () => {
             <label className='mb-3 text-2xl font-semibold' htmlFor="">Description of your company</label>
             <textarea onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' type="text" name="desc" placeholder='Enter Description' />
             
-            {/* <label className='mb-3 text-2xl font-semibold' htmlFor="">Upload Logo</label>
-            <input onChange={setAccountChange} className='mb-5' type="file" name="logo" id="" /> */}
+            <label className='mb-3 text-2xl font-semibold' htmlFor="">Upload Logo</label>
+            <input onChange={e => setLogo(e.target.files[0])} className='mb-5' type="file" name="logo" id="" />
             
             <p className='font-semibold mb-4'>Already have an account? <Link to='/login' className='text-blue-500'>Login</Link></p>
             <button onClick={submitRegister} className='w-[80%] bg-blue-500 text-white px-10 py-3 font-semibold rounded text-center'>REGISTER</button>

@@ -11,13 +11,13 @@ const url = 'https://iiic-backend.herokuapp.com'
 
 const InternDashPage = () => {
   React.useEffect(() =>{
-    if(!localStorage.getItem('user')){
+    if(!sessionStorage.getItem('user')){
       window.location.replace('/login')
     }
     const checkIfAdmin = async() =>{
       const res = await axios.get(`${url}/api/checkAdmin`,{
           headers: {
-              Authorization: localStorage.getItem('user')
+              Authorization: sessionStorage.getItem('user')
           }
       })
       if(res.data.status == true){

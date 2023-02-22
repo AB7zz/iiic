@@ -23,7 +23,7 @@ const Navbar = () => {
   const clickSignOut = () => {
       const auth = getAuth();
       signOut(auth).then(() => {
-        localStorage.removeItem('user')
+        sessionStorage.removeItem('user')
         window.location.replace('/login')
       }).catch((error) => {
         console.log('Error 23: ', error)
@@ -32,7 +32,7 @@ const Navbar = () => {
   return (
     <nav class="flex items-center justify-between flex-wrap bg-transparent pt-6 pb-6 pl-24 pr-8 ">
       <div class="flex items-center flex-shrink-0 text-white mr-6">
-        <Link to="/dashboard/internship" class="font-bold text-2xl tracking-tight text-[#16255D]">IIIC SOE</Link>
+        <Link to="/admin" class="font-bold text-2xl tracking-tight text-[#16255D]">IIIC SOE</Link>
       </div>
       <div class="block lg:hidden">
         <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
@@ -41,15 +41,18 @@ const Navbar = () => {
       </div>
       <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto justify-around">
         <div class="text-sm lg:flex-grow">
-          <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 font-semibold text-black hover:text-[#2979F2] focus:text-[#2979F2] mr-4">
+          <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-black hover:text-[#2979F2] focus:text-[#2979F2] mr-4">
             Dashboard
           </a>
-          <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 font-semibold text-black hover:text-[#2979F2] focus:text-[#2979F2] mr-4">
+          <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-black hover:text-[#2979F2] focus:text-[#2979F2] mr-4">
             Profile
           </a>
-          <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 font-semibold text-black hover:text-[#2979F2] focus:text-[#2979F2]">
+          <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-black hover:text-[#2979F2] focus:text-[#2979F2] mr-4">
             Reports
           </a>
+          <Link to='/register' className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-black hover:text-[#2979F2] focus:text-[#2979F2]">
+            Register an account
+          </Link>
         </div>
         <div>
           <button onClick={clickSignOut} to="/login" class="mr-5 inline-block text-sm px-4 pr-8 pl-8 py-4 leading-none border rounded text-[#2979F2] font-semibold border-white hover:border-transparent bg-[#C2C2C2] bg-opacity-30 mt-4 lg:mt-0">Log Out</button>

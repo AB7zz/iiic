@@ -6,9 +6,9 @@ const Analytics = () => {
   return (
     <div className='flex flex-col mt-36 ml-36'>
         <p className='text-4xl'>Total Posts</p>
-        <p className='text-8xl font-semibold text-[#323232]'>{totalPosts}</p>
+        <p className='text-8xl font-semibold text-[#323232]'>{totalPosts || '0'}</p>
         <p className='text-4xl'>Approved Posts</p>
-        <p className='text-8xl font-semibold text-[#31AD1D]'>{totalVerified}</p>
+        <p className='text-8xl font-semibold text-[#31AD1D]'>{totalVerified || '0'}</p>
     </div>
   )
 }

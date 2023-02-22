@@ -12,13 +12,13 @@ export const HomeContextProvider = ({children}) => {
   React.useEffect(() => {
     const getData = async() => {
       try{
-        if(localStorage.getItem('user')){
+        if(sessionStorage.getItem('user')){
           const apiData = await axios.get(`${url}/api/companyDetails`, {
               params:{
-                user: localStorage.getItem('user')
+                user: sessionStorage.getItem('user')
               },
               headers: {
-                Authorization: localStorage.getItem('user')
+                Authorization: sessionStorage.getItem('user')
               }
           })
           setCompany(apiData.data.companyData)

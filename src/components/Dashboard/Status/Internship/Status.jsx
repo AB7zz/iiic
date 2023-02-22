@@ -22,7 +22,7 @@ const Status = () => {
     <>
         <div className='grid grid-cols-3 mb-5'>
             <Company className='grid-span-1'/>
-            <div className='w-max'>
+            <div className='w-full'>
                 <h2 className='text-3xl text-[#16255D] font-semibold mb-3'>Posts Details</h2>
                 <table className="table-auto">
                     <thead>
@@ -41,7 +41,7 @@ const Status = () => {
                                     console.log('this is called')
                                     const res = await axios.post(`${url}/api/recruited`, post, {
                                         headers: {
-                                            Authorization: localStorage.getItem('user')
+                                            Authorization: sessionStorage.getItem('user')
                                         }
                                     })
                                     if(res.data.success == true){

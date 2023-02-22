@@ -5,7 +5,7 @@ import Navbar from '../../../../components/Dashboard/Upload/Navbar/Navbar'
 
 const StatusPage = () => {
   React.useEffect(() =>{
-    if(!localStorage.getItem('user')){
+    if(!sessionStorage.getItem('user')){
       window.location.replace('/login')
     }
   }, [])

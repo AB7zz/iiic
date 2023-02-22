@@ -2,7 +2,7 @@ import React from 'react'
 
 const JobUploadPage = () => {
   React.useEffect(() =>{
-    if(!localStorage.getItem('user')){
+    if(!sessionStorage.getItem('user')){
       window.location.replace('/login')
     }
   }, [])

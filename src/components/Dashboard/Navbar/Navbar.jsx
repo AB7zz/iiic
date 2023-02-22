@@ -23,7 +23,7 @@ const Navbar = () => {
   const clickSignOut = () => {
       const auth = getAuth();
       signOut(auth).then(() => {
-        localStorage.removeItem('user')
+        sessionStorage.removeItem('user')
         window.location.replace('/login')
       }).catch((error) => {
         console.log('Error 23: ', error)
