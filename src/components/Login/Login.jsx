@@ -4,6 +4,9 @@ import HomeIcon from '@mui/icons-material/Home';
 import cusatLogo from '../../assets/cusat-logo.png'
 import {initializeApp} from 'firebase/app'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import axios from 'axios'
+
+const url = 'https://iiic-backend.herokuapp.com'
 
 const Login = () => {
   const [account, setAccount] = React.useState({
@@ -15,14 +18,25 @@ const Login = () => {
         ...prevState, [e.target.name]: e.target.value
       }))
   }
+  const checkIfAdmin = async() =>{
+    const res = await axios.get(`${url}/api/checkAdmin`,{
+        headers: {
+            Authorization: localStorage.getItem('user')
+        }
+    })
+    if(res.data.status == true){
+        window.location.replace('/admin')
+    }else{
+      window.location.replace('/dashboard/internship')
+    }
+  }
   const submitLogin = async() => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, account.email, account.pass)
-      .then((userCredential) => {
+    .then((userCredential) => {
         const user = userCredential.user;
         localStorage.setItem('user', user.accessToken)
-        console.log(user)
-        window.location.replace('/dashboard/internship')
+        checkIfAdmin()
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -64,7 +78,7 @@ const Login = () => {
             <label className='mb-3 text-2xl font-semibold' htmlFor="">Password</label>
             <input onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' type="password" name="pass" placeholder='Enter Password' />
             
-            <p className='font-semibold mb-4'>Do not have an account? <Link to='/register' className='text-blue-500'>Create one</Link></p>
+            {/* <p className='font-semibold mb-4'>Do not have an account? <Link to='/register' className='text-blue-500'>Create one</Link></p> */}
             <button onClick={submitLogin} to='/dashboard/internship' className='w-[80%] bg-blue-500 text-white px-10 py-3 font-semibold rounded text-center'>LOGIN</button>
         </div>  
       </div>

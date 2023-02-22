@@ -18,7 +18,7 @@ const Admin = () => {
             }
         }
         const fetchPosts = async() => {
-            const res = await axios.get(`${url}/api/getInternshipPosts`, {
+            const res = await axios.get(`${url}/api/getInternshipPosts`,{
                 headers:{
                     Authorization: localStorage.getItem('user')
                 }
