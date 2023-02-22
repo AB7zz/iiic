@@ -3,6 +3,7 @@ import companyLogo from '../../../../assets/company-logo.png'
 import axios from 'axios'
 
 const url = 'https://iiic-backend.herokuapp.com'
+//const url = 'http://localhost:5000'
 
 const Upload = () => {
     const [upload, setUpload] = React.useState()

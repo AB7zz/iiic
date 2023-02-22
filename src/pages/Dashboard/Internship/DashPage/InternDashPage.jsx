@@ -7,6 +7,7 @@ import Options from '../../../../components/Dashboard/Options/Options'
 import axios from 'axios'
 
 const url = 'https://iiic-backend.herokuapp.com'
+//const url = 'http://localhost:5000'
 
 const InternDashPage = () => {
   React.useEffect(() =>{

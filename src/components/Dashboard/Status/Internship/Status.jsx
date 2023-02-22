@@ -6,6 +6,7 @@ import axios from 'axios'
 
 
 const url = 'https://iiic-backend.herokuapp.com'
+//const url = 'http://localhost:5000'
 
 
 const Status = () => {
@@ -14,15 +15,7 @@ const Status = () => {
   if(companyDetail){
       for(const key in companyDetail.Interns){
         const value = companyDetail.Interns[key]
-        items.push(
-            <tr key={key}>
-                <td>{value.title}</td>
-                <td>{value.desc}</td>
-                <td>{value.title}</td>
-                {value.verified ? <td className='text-green-500 font-semibold'>Verified</td> : <td className='text-red-500 font-semibold'>Not Verified</td>}
-                {value.recruited ? <td className='text-green-500 font-semibold'>Recruited</td> : <td className='text-red-500 font-semibold'>Not Recruited</td>}
-            </tr>
-        )
+        items.push(value)
       }
   }
   return (
@@ -42,7 +35,31 @@ const Status = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {items}
+                        {items && items.map(post => {
+                            const handleRecruited = async() => {
+                                try {
+                                    console.log('this is called')
+                                    const res = await axios.post(`${url}/api/recruited`, post, {
+                                        headers: {
+                                            Authorization: localStorage.getItem('user')
+                                        }
+                                    })
+                                    if(res.data.success == true){
+                                        location.reload()
+                                    }
+                                } catch (error) {
+                                    console.log('Error 9: ', error)
+                                }
+                            }
+                            return(
+                            <tr key={post.id}>
+                                <td>{post.title}</td>
+                                <td>{post.desc}</td>
+                                <td>{post.title}</td>
+                                {post.verified ? <td className='text-green-500 font-semibold'>Verified</td> : <td className='text-red-500 font-semibold'>Not Verified</td>}
+                                {post.recruited ? <td><button className='rounded-[15px] text-white bg-red-300 px-5 py-2 mt-4 mr-5'>Recruited</button></td> : <td><button onClick={handleRecruited} className='rounded-[15px] text-white bg-red-500 px-5 py-2 mt-4 mr-5 hover:bg-red-300'>Mark as Recruited</button></td>}
+                            </tr>
+                        )})}
                     </tbody>
                 </table>
             </div>

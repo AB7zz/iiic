@@ -4,6 +4,7 @@ import { CompanyContext } from '../Context/CompanyContextProvider'
 import axios from 'axios'
 
 const url = 'https://iiic-backend.herokuapp.com'
+//const url = 'http://localhost:5000'
 
 const Company = () => {
   const {companyDetail} = React.useContext(CompanyContext)

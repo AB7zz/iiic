@@ -7,6 +7,7 @@ import {initializeApp} from 'firebase/app'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const url = 'https://iiic-backend.herokuapp.com'
+//const url = 'http://localhost:5000'
 
 const Register = () => {
     if(localStorage.getItem('user')){
