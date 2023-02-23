@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import {useLocation} from 'react-router-dom'
 import { CompanyContext } from '../../Context/CompanyContextProvider'
+
 const url = 'https://iiic-backend.herokuapp.com'
 //const url = 'http://localhost:5000'
 
@@ -11,7 +12,13 @@ const Edit = () => {
     const id = useLocation()
     const postId = id.pathname.split('/')[5]
     React.useEffect(() => {
-      if(companyDetail) setEdit(companyDetail.Interns[postId])
+      if(companyDetail){
+        if(companyDetail.Interns[postId].edit == true){
+            setEdit(companyDetail.Interns[postId])
+        }else{
+            window.location.replace('/dashboard/internship/checkStatus')
+        }
+      }
     }, [])
     const setEditChange = (e) => {
         setEdit(prevState => ({

@@ -32,10 +32,10 @@ const Upload = () => {
         
     }
   return (
-    <div className='grid grid-cols-2 pl-20'>
-        {/* <div className='mt-40'>
+    <div className='grid grid-cols-3'>
+        <div className='mt-40'>
             <img className='w-[250px] m-auto' src={logo} alt="company logo" />
-        </div> */}
+        </div>
         <div className='flex flex-col w-[80%]'>
             <h3 className='text-2xl text-[#16255D] font-semibold mb-3'>Please Fill Your Details</h3>
             <div className='flex flex-col mb-5'>
