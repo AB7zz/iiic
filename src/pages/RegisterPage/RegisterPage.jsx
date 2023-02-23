@@ -1,5 +1,9 @@
 import React from 'react'
 import Register from '../../components/Register/Register';
+import axios from 'axios'
+
+const url = 'https://iiic-backend.herokuapp.com'
+//const url = 'http://localhost:5000'
 
 const RegisterPage = () => {
   React.useEffect(() => {

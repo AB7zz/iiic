@@ -41,7 +41,6 @@ export const CompanyContextProvider = ({children}) => {
           setCompany(apiData.data.companyData)
           const imageListRef = ref(storage, `${apiData.data.companyData.email}/`)
           listAll(imageListRef).then((response) => {
-            console.log(response)
             getDownloadURL(response.items[0]).then(url => {
               setLogo(url)
             })

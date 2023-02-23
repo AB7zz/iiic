@@ -32,10 +32,10 @@ const Upload = () => {
         
     }
   return (
-    <div className='grid grid-cols-3'>
-        <div className='mt-40'>
+    <div className='grid grid-cols-2 pl-20'>
+        {/* <div className='mt-40'>
             <img className='w-[250px] m-auto' src={logo} alt="company logo" />
-        </div>
+        </div> */}
         <div className='flex flex-col w-[80%]'>
             <h3 className='text-2xl text-[#16255D] font-semibold mb-3'>Please Fill Your Details</h3>
             <div className='flex flex-col mb-5'>
@@ -44,14 +44,14 @@ const Upload = () => {
             </div>
             <div className='flex flex-col mb-5'>
                 <label className='text-[#A0A2A4] ' htmlFor="">Role Description</label>
-                <textarea name='desc' onChange={setUploadChange} type="text" className='h-[250px] border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3' placeholder='Enter Description'></textarea>
+                <textarea name='desc' onChange={setUploadChange} type="text" className='h-[100px] border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3' placeholder='Enter Description'></textarea>
             </div>
             <div className='flex flex-col mb-5'>
                 <label className='text-[#A0A2A4] ' htmlFor="">Skills</label>
                 <input name='skills' onChange={setUploadChange} type="text" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3' placeholder='Enter Skills' />
             </div>
-            <div className='flex flex-col mb-5'>
                 <label className='text-[#A0A2A4] ' htmlFor="">How many interns from each department?</label>
+            <div className='grid grid-cols-2 mb-5'>
                 <div className='flex mb-5'>
                     <input name='cs' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/4 mr-3'/>
                     <p>from Computer Science</p>

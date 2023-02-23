@@ -21,6 +21,7 @@ import JobReportPage from './pages/Dashboard/Job/ReportPage/JobReportPage.jsx'
 import Successful from './components/Dashboard/Upload/Successful/Successful'
 
 import AdminPage from './pages/Admin/AdminPage'
+import InternEditPage from './pages/Dashboard/Internship/EditPage/InternEditPage'
 
 function App() {
   return (
@@ -61,7 +62,12 @@ function App() {
           {/* Reports  */}
 
 
+          {/* Edit  */}
+          <Route path='/dashboard/internship/edit/:email/:id' element={<InternEditPage/>} />
+          {/* Edit  */}
+
           <Route path='/admin' element={<AdminPage/>} />
+          <Route path='/admin/internship' element={<AdminPage/>} />
 
         </Routes>
       </BrowserRouter>

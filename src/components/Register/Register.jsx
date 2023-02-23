@@ -13,6 +13,7 @@ const url = 'https://iiic-backend.herokuapp.com'
 
 const Register = () => {
   const [logo, setLogo] = React.useState(null)
+  const [type, setType] = React.useState('company')
     React.useEffect(() =>{
         const firebaseConfig = {
           apiKey: "AIzaSyBAVeMwDYCI2sQ6ODZ0Mt7V9TgmkEqAyJQ",
@@ -60,13 +61,7 @@ const Register = () => {
                     }
                 })
                 if(res.data.success == true){
-                    // sessionStorage.setItem('user', user.accessToken)
                     window.location.replace('/admin')
-                    // if(account.type === 'admin'){
-                    //   window.location.replace('/admin')
-                    // }else{
-                    //   window.location.replace('/dashboard/internship')
-                    // }
                 }
             })
             .catch((error) => {
@@ -87,9 +82,12 @@ const Register = () => {
         </div>
         <div className='rounded-[20px] shadow-xl flex flex-col py-12 px-5'>
             <label className='mb-3 text-2xl font-semibold' htmlFor="">Type of Account</label>
-            <select onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' name="type" id="" required>
-              <option value="">Select Option</option>
-              <option value="company">Company</option>
+            <select onChange={(e) => {
+              setAccountChange,
+              setType(e.target.value),
+              console.log(type)
+            }} className='mb-5 border-b-2 border-[#C2C2C2]' name="type" id="" required>
+              <option value="company" selected>Company</option>
               <option value="admin">Admin</option>
             </select>
             
@@ -99,7 +97,7 @@ const Register = () => {
             <label className='mb-3 text-2xl font-semibold' htmlFor="">Password</label>
             <input onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' type="password" name="pass" placeholder='Enter Password' />
 
-            <label className='mb-3 text-2xl font-semibold' htmlFor="">Department</label>
+            {(type != "company") && <><label className='mb-3 text-2xl font-semibold' htmlFor="">Department</label>
             <select onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' name="dept" id="" required>
               <option value="">Select Option</option>
               <option value="core">Core Admin</option>
@@ -110,9 +108,9 @@ const Register = () => {
               <option value="SF">SF</option>
               <option value="MEC">MEC</option>
               <option value="CE">CE</option>
-            </select>
+            </select></>}
                        
-            <label className='mb-3 text-2xl font-semibold' htmlFor="">Name of Company</label>
+            {(type != "admin") && <><label className='mb-3 text-2xl font-semibold' htmlFor="">Name of Company</label>
             <input onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' type="text" name="company" placeholder='Enter Name' />
             
             <label className='mb-3 text-2xl font-semibold' htmlFor="">Industry</label>
@@ -126,9 +124,8 @@ const Register = () => {
             <textarea onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' type="text" name="desc" placeholder='Enter Description' />
             
             <label className='mb-3 text-2xl font-semibold' htmlFor="">Upload Logo</label>
-            <input onChange={e => setLogo(e.target.files[0])} className='mb-5' type="file" name="logo" id="" />
+            <input onChange={e => setLogo(e.target.files[0])} className='mb-5' type="file" name="logo" id="" /></>}
             
-            <p className='font-semibold mb-4'>Already have an account? <Link to='/login' className='text-blue-500'>Login</Link></p>
             <button onClick={submitRegister} className='w-[80%] bg-blue-500 text-white px-10 py-3 font-semibold rounded text-center'>REGISTER</button>
         </div>  
       </div>
