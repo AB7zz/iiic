@@ -1,8 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 import { CompanyContext } from '../../Context/CompanyContextProvider'
+
 const url = 'https://iiic-backend.herokuapp.com'
-//const url = 'http://localhost:5000'
+// const url = 'http://localhost:5000'
 
 const Upload = () => {
     const {logo} = React.useContext(CompanyContext)
@@ -15,7 +16,11 @@ const Upload = () => {
 
     const uploadForm = async(e) => {
         e.preventDefault()
-        console.log(upload)
+        const data = {
+            name: "Abhinav C V",
+            email: "abhinavcv007@gmail.com",
+            message: "This is a test message"
+        }
         try{
             const res = await axios.post(`${url}/api/uploadIntern`, upload, {
                 headers: {
@@ -23,6 +28,12 @@ const Upload = () => {
                     "Content-Type": "application/json"
                 }
             })
+            // axios.post('http://localhost/iiic/backend/mail.php', data)
+            //     .then(response => {
+            //         console.log(response)
+            //     }).catch(error => {
+            //         console.log('Error 11: ', error)
+            //     })
             if(res.data.success == true){
                 window.location.replace('/dashboard/successfulUpload')
             }
