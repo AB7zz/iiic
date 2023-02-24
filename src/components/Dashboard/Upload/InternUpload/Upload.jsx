@@ -28,12 +28,6 @@ const Upload = () => {
                     "Content-Type": "application/json"
                 }
             })
-            // axios.post('http://localhost/iiic/backend/mail.php', data)
-            //     .then(response => {
-            //         console.log(response)
-            //     }).catch(error => {
-            //         console.log('Error 11: ', error)
-            //     })
             if(res.data.success == true){
                 window.location.replace('/dashboard/successfulUpload')
             }
@@ -43,8 +37,8 @@ const Upload = () => {
         
     }
   return (
-    <div className='grid grid-cols-3'>
-        <div className='mt-40'>
+    <div className='grid grid-cols-1 md:grid-cols-3 md:p-0 pl-12'>
+        <div className='hidden md:block mt-40'>
             <img className='w-[250px] m-auto' src={logo} alt="company logo" />
         </div>
         <div className='flex flex-col w-[80%]'>
@@ -62,40 +56,40 @@ const Upload = () => {
                 <input name='skills' onChange={setUploadChange} type="text" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3' placeholder='Enter Skills' />
             </div>
                 <label className='text-[#A0A2A4] ' htmlFor="">How many interns from each department?</label>
-            <div className='grid grid-cols-2 mb-5'>
+            <div className='grid grid-cols-1 md:grid-cols-2 mb-5'>
                 <div className='flex mb-5'>
-                    <input name='cs' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/4 mr-3'/>
-                    <p>from Computer Science</p>
+                    <input name='cs' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/2 md:w-1/4 mr-3'/>
+                    <p>Computer Science</p>
                 </div>
                 <div className='flex mb-5'>
-                    <input name='it' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/4 mr-3'/>
-                    <p>from Information Technology</p>
+                    <input name='it' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/2 md:w-1/4 mr-3'/>
+                    <p>Information Technology</p>
                 </div>
                 <div className='flex mb-5'>
-                    <input name='eee' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/4 mr-3'/>
-                    <p>from Electrical Engineering</p>
+                    <input name='eee' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/2 md:w-1/4 mr-3'/>
+                    <p>Electrical Engineering</p>
                 </div>
                 <div className='flex mb-5'>
-                    <input name='ec' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/4 mr-3'/>
-                    <p>from Electrnoics & Communication</p>
+                    <input name='ec' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/2 md:w-1/4 mr-3'/>
+                    <p>Electrnoics & Communication</p>
                 </div>
                 <div className='flex mb-5'>
-                    <input name='sf' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/4 mr-3'/>
-                    <p>from Safety & Fire Engineering</p>
+                    <input name='sf' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/2 md:w-1/4 mr-3'/>
+                    <p>Safety & Fire Engineering</p>
                 </div>
                 <div className='flex mb-5'>
-                    <input name='mec' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/4 mr-3'/>
-                    <p>from Mechanical Engineering</p>
+                    <input name='mec' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/2 md:w-1/4 mr-3'/>
+                    <p>Mechanical Engineering</p>
                 </div>
                 <div className='flex mb-5'>
-                    <input name='ce' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/4 mr-3'/>
-                    <p>from Civil Engineering</p>
+                    <input name='ce' onChange={setUploadChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/2 md:w-1/4 mr-3'/>
+                    <p>Civil Engineering</p>
                 </div>
             </div>
             
             
         </div>
-        <div className='flex flex-col w-[80%] mt-12'>
+        <div className='flex flex-col w-[80%] md:mt-12'>
             <div className='flex flex-col mb-5'>
                 <label className='text-[#A0A2A4] ' htmlFor="">Location</label>
                 <input name='loc' onChange={setUploadChange} type="text" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3' placeholder='Enter Location' />

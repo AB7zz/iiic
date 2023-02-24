@@ -2,9 +2,9 @@ import React from 'react'
 
 const How = () => {
   return (
-    <div className='py-40'>
-      <h1 className='text-7xl font-bold text-center'><span className="text-[#323232]">How it </span><span className='text-[#2979F2]'>Works</span></h1>
-      <div className='grid grid-cols-3 pl-32 py-20'>
+    <div className='md:py-40 '>
+      <h1 className='text-3xl md:text-7xl font-bold text-center'><span className="text-[#323232]">How it </span><span className='text-[#2979F2]'>Works</span></h1>
+      <div className='grid grid-cols-1 md:grid-cols-3 pl-16 md:pl-32 py-16 md:py-20'>
         <div>
           <span className='text-[#2979F2] text-7xl font-bold'>1</span>
           <p className='font-semibold text-xl'>Login</p>

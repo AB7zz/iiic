@@ -5,6 +5,7 @@ import Company from '../../../../components/Dashboard/Company/Company'
 import Navbar from '../../../../components/Dashboard/Navbar/Navbar'
 import Options from '../../../../components/Dashboard/Options/Options'
 import axios from 'axios'
+import Navbar2 from '../../../../components/Dashboard/Navbar/Navbar2'
 
 const url = 'https://iiic-backend.herokuapp.com'
 //const url = 'http://localhost:5000'
@@ -28,9 +29,10 @@ const InternDashPage = () => {
   }, [])
   return (
     <>
-      <Navbar/>
+      {/* <Navbar/> */}
+      <Navbar2/>
       <Options/>
-      <div className='grid grid-cols-3'>
+      <div className='grid grid-cols-1 md:grid-cols-3'>
         <Company/>
         <InternButtons/>
         <Analytics/>

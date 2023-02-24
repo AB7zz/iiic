@@ -73,7 +73,7 @@ const Register = () => {
   return (
     <div className='py-10 px-5'>
       <Link to='/admin' className='ml-auto py-5 px-4 text-white bg-[#0A043C] rounded-[15px] font-semibold'>Admin Panel <HomeIcon/> </Link>
-      <div className='mt-20 grid grid-cols-2'>
+      <div className='mt-20 grid grid-cols-1 md:grid-cols-2'>
         <div className='justify-self-center'>
             <img className='ml-20' src={cusatLogo} alt="cusat logo" />
             <h2 className='text-[#16255D] text-center font-bold text-5xl'>IIIC SOE</h2>

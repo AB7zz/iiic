@@ -1,12 +1,12 @@
 import React from 'react'
-import Navbar from '../../Navbar/Navbar'
+import Navbar2 from '../../Navbar/Navbar2'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { Link } from 'react-router-dom';
 
 const Successful = () => {
   return (
     <>
-        <Navbar/>
+        <Navbar2/>
         <div className='flex flex-col mt-24'>
             <CheckCircleIcon style={{color: 'green', fontSize: '200px'}} className='m-auto' />
             <h2 className='text-center text-4xl font-semibold'>Successfully submitted for review! </h2>

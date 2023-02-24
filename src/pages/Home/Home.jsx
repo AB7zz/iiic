@@ -5,10 +5,12 @@ import About from '../../components/Home/About/About'
 import Cat from '../../components/Home/Cat/Cat'
 import How from '../../components/Home/How/How'
 import Footer from '../../components/Home/Footer/Footer'
+import Navbar2 from '../../components/Home/Navbar/Navbar2'
 const Home = () => {
   return (
     <div>
-        <Navbar/>
+        {/* <Navbar/> */}
+        <Navbar2/>
         <Hero/>
         <About/>
         {/* <Cat/> */}
