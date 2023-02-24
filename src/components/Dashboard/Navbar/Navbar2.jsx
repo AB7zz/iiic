@@ -30,7 +30,7 @@ const Navbar2 = () => {
       }
   return (  
     <nav className='bg-white py-4'>
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl px-4">
             <div className="flex justify-between">
                 <div className="flex space-x-7">
                     <div>
@@ -38,7 +38,7 @@ const Navbar2 = () => {
                             <Link to="/dashboard/internship" className="font-bold text-2xl tracking-tight text-[#16255D]">IIIC SOE</Link>
                         </a>
                     </div>
-                    <div className="hidden md:flex items-center space-x-1">
+                    <div className="hidden md:flex items-center ">
                         <Link to='/dashboard/internship' className="py-4 px-2 focus:text-[#2979F2] focus:border-b-4 focus:border-[#2979F2] font-semibold ">Dashboard</Link>
                         <Link to='/dashboard/internship/checkStatus' className="py-4 px-2 text-black-500 focus:border-b-4 focus:text-[#2979F2]  focus:border-[#2979F2] font-semibold hover:text-[#2979F2] transition duration-300">My Posts</Link>
                         <a href="#" className="py-4 px-2 text-black-500 focus:border-b-4 focus:text-[#2979F2]  focus:border-[#2979F2] font-semibold hover:text-[#2979F2] transition duration-300">Profile</a>

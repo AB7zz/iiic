@@ -6,7 +6,7 @@ const Navbar2 = () => {
     const {isLogin, admin} = React.useContext(HomeContext)
     const [toggle, setToggle] = React.useState(false)
   return (  
-    <nav className='bg-white md:absolute'>
+    <nav className='bg-white py-4 md:absolute'>
         <div className="max-w-6xl mx-auto px-4">
             <div className="flex justify-between">
                 <div className="flex space-x-7">
