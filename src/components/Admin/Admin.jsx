@@ -1,11 +1,13 @@
 import React from 'react'
 import axios from 'axios'
 import Options from './Options'
+import { useNavigate } from 'react-router-dom'
 
 const url = 'https://iiic-backend.herokuapp.com'
 //const url = 'http://localhost:5000'
 
 const Admin = () => {
+    const navigate = useNavigate()
     const [posts, setPosts] = React.useState()
     const [note, setNote] = React.useState()
     React.useEffect(() => {
@@ -16,7 +18,7 @@ const Admin = () => {
                 }
             })
             if(res.data.status == false){
-                window.location.replace('/dashboard/internship')
+                window.location.replace('/iiic/dashboard/internship')
             }
         }
         const fetchPosts = async() => {

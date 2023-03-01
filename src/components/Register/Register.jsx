@@ -1,19 +1,19 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import HomeIcon from '@mui/icons-material/Home';
 import cusatLogo from '../../assets/cusat-logo.png'
 import axios from 'axios'
 import {initializeApp} from 'firebase/app'
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import {ref, uploadBytes, getStorage} from 'firebase/storage'
-import {v4} from 'uuid'
 
 const url = 'https://iiic-backend.herokuapp.com'
-//const url = 'http://localhost:5000'
+// const url = 'http://localhost:5000'
 
 const Register = () => {
   const [logo, setLogo] = React.useState(null)
   const [type, setType] = React.useState('company')
+  const navigate = useNavigate()
     React.useEffect(() =>{
         const firebaseConfig = {
           apiKey: "AIzaSyBAVeMwDYCI2sQ6ODZ0Mt7V9TgmkEqAyJQ",
@@ -55,13 +55,13 @@ const Register = () => {
             .then(async(userCredential) => {
                 const user = userCredential.user;
                 console.log(user.accessToken)
-                const res = await axios.post(`${url}/api/register`, account, {
+                const res = await axios.post(`${url}/api/register`, {account, type}, {
                     headers: {
                         Authorization: `${user.accessToken}`
                     }
                 })
                 if(res.data.success == true){
-                    window.location.replace('/admin')
+                    window.location.replace('/iiic/admin')
                 }
             })
             .catch((error) => {
@@ -82,11 +82,7 @@ const Register = () => {
         </div>
         <div className='rounded-[20px] shadow-xl flex flex-col py-12 px-5'>
             <label className='mb-3 text-2xl font-semibold' htmlFor="">Type of Account</label>
-            <select onChange={(e) => {
-              setAccountChange,
-              setType(e.target.value),
-              console.log(type)
-            }} className='mb-5 border-b-2 border-[#C2C2C2]' name="type" id="" required>
+            <select onChange={(e) => { setType(e.target.value) }} className='mb-5 border-b-2 border-[#C2C2C2]' name="type" id="" required>
               <option value="company" selected>Company</option>
               <option value="admin">Admin</option>
             </select>

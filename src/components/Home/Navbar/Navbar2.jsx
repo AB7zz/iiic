@@ -17,9 +17,10 @@ const Navbar2 = () => {
                     </div>
                     <div className="hidden md:flex items-center space-x-1">
                         <a href="#" className="py-4 px-2 focus:text-[#2979F2] focus:border-b-4 focus:border-[#2979F2] font-semibold ">Home</a>
-                        <a href="#" className="py-4 px-2 text-black-500 focus:border-b-4 focus:text-[#2979F2]  focus:border-[#2979F2] font-semibold hover:text-[#2979F2] transition duration-300">Services</a>
-                        <a href="#" className="py-4 px-2 text-black-500 focus:border-b-4 focus:text-[#2979F2]  focus:border-[#2979F2] font-semibold hover:text-[#2979F2] transition duration-300">About</a>
-                        <a href="#" className="py-4 px-2 text-black-500 focus:border-b-4 focus:text-[#2979F2]  focus:border-[#2979F2] font-semibold hover:text-[#2979F2] transition duration-300">Contact Us</a>
+                        {/* <a href="#" className="py-4 px-2 text-black-500 focus:border-b-4 focus:text-[#2979F2]  focus:border-[#2979F2] font-semibold hover:text-[#2979F2] transition duration-300">Services</a> */}
+                        <a href="#about" className="py-4 px-2 text-black-500 focus:border-b-4 focus:text-[#2979F2]  focus:border-[#2979F2] font-semibold hover:text-[#2979F2] transition duration-300">About</a>
+                        <a href="#how" className="py-4 px-2 text-black-500 focus:border-b-4 focus:text-[#2979F2]  focus:border-[#2979F2] font-semibold hover:text-[#2979F2] transition duration-300">How it works</a>
+                        <a href="#footer" className="py-4 px-2 text-black-500 focus:border-b-4 focus:text-[#2979F2]  focus:border-[#2979F2] font-semibold hover:text-[#2979F2] transition duration-300">Contact Us</a>
                         {(isLogin && !admin) 
                             ? <><Link to="/dashboard/internship" className="ml-3 inline-block text-sm px-4 pr-8 pl-8 py-4 leading-none border rounded text-[#2979F2] font-semibold border-white hover:border-transparent bg-[#C2C2C2] bg-opacity-30 mt-4 lg:mt-0">Dashboard</Link></> 
                         
@@ -50,9 +51,10 @@ const Navbar2 = () => {
         {toggle && <div className="mobile-menu">
             <ul className="">
                 <li className="active"><a className="block text-sm px-2 py-4 text-black font-semibold">Home</a></li>
-                <li><a className="block text-sm px-2 py-4 text-black transition duration-300 font-semibold">Services</a></li>
-                <li><a className="block text-sm px-2 py-4 text-black transition duration-300 font-semibold">About</a></li>
-                <li><a className="block text-sm px-2 py-4 text-black transition duration-300 font-semibold">Contact Us</a></li>
+                {/* <li><a className="block text-sm px-2 py-4 text-black transition duration-300 font-semibold">Services</a></li> */}
+                <li><a href='#about' className="block text-sm px-2 py-4 text-black transition duration-300 font-semibold">About</a></li>
+                <li><a href="#how" className="block text-sm px-2 py-4 text-black transition duration-300 font-semibold">How it works</a></li>
+                <li><a href='#footer' className="block text-sm px-2 py-4 text-black transition duration-300 font-semibold">Contact Us</a></li>
                 {(isLogin && !admin) 
                     ? <><Link to="/dashboard/internship" className="ml-3 inline-block text-sm px-4 pr-8 pl-8 py-4 leading-none border rounded text-[#2979F2] font-semibold border-white hover:border-transparent bg-[#C2C2C2] bg-opacity-30 mt-4 lg:mt-0">Dashboard</Link></> 
                 

@@ -1,12 +1,14 @@
 import React from 'react'
 import axios from 'axios'
 import { CompanyContext } from '../../Context/CompanyContextProvider'
+import { useNavigate } from 'react-router-dom'
 
 const url = 'https://iiic-backend.herokuapp.com'
 // const url = 'http://localhost:5000'
 
 const Upload = () => {
     const {logo} = React.useContext(CompanyContext)
+    const navigate = useNavigate()
     const [upload, setUpload] = React.useState()
     const setUploadChange = (e) => {
         setUpload(prevState => ({
@@ -29,7 +31,7 @@ const Upload = () => {
                 }
             })
             if(res.data.success == true){
-                window.location.replace('/dashboard/successfulUpload')
+                window.location.replace('/iiic/dashboard/successfulUpload')
             }
         }catch(error){
             console.log('Error 5: ', error)

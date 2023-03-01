@@ -26,7 +26,7 @@ import InternEditPage from './pages/Dashboard/Internship/EditPage/InternEditPage
 function App() {
   return (
     <div>
-      <BrowserRouter>
+      <BrowserRouter basename='/iiic'>
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/login' element={<LoginPage/>} />

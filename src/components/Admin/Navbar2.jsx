@@ -1,11 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { getAuth, signOut } from "firebase/auth";
 import HomeIcon from '@mui/icons-material/Home';
 import {initializeApp} from 'firebase/app'
 
 const Navbar2 = () => {
     const [toggle, setToggle] = React.useState(false)
+    const navigate = useNavigate()
     React.useEffect(() =>{
         const firebaseConfig = {
           apiKey: "AIzaSyBAVeMwDYCI2sQ6ODZ0Mt7V9TgmkEqAyJQ",
@@ -23,7 +24,7 @@ const Navbar2 = () => {
           const auth = getAuth();
           signOut(auth).then(() => {
             sessionStorage.removeItem('user')
-            window.location.replace('/login')
+            window.location.replace('/iiic/login')
           }).catch((error) => {
             console.log('Error 23: ', error)
           });

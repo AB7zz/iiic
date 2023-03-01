@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import HomeIcon from '@mui/icons-material/Home';
 import cusatLogo from '../../assets/cusat-logo.png'
 import {initializeApp} from 'firebase/app'
@@ -10,6 +10,7 @@ const url = 'https://iiic-backend.herokuapp.com'
 //const url = 'http://localhost:5000'
 
 const Login = () => {
+  const navigate = useNavigate()
   const [account, setAccount] = React.useState({
     email: '',
     pass: ''
@@ -26,9 +27,9 @@ const Login = () => {
         }
     })
     if(res.data.status == true){
-        window.location.replace('/admin')
+        window.location.replace('/iiic/admin')
     }else{
-      window.location.replace('/dashboard/internship')
+      window.location.replace('/iiic/dashboard/internship')
     }
   }
   const submitLogin = async() => {
@@ -48,7 +49,7 @@ const Login = () => {
   }
   React.useEffect(() =>{
     if(sessionStorage.getItem('user')){
-      window.location.replace('/dashboard/internship')
+      window.location.replace('/iiic/dashboard/internship')
     }
     const firebaseConfig = {
       apiKey: "AIzaSyBAVeMwDYCI2sQ6ODZ0Mt7V9TgmkEqAyJQ",
@@ -71,7 +72,7 @@ const Login = () => {
             <img className='ml-20' src={cusatLogo} alt="cusat logo" />
             <h2 className='text-[#16255D] text-center font-bold text-5xl'>IIIC SOE</h2>
             <h4 className='text-[#0A043C] text-center font-bold text-5xl'>Login Portal</h4>
-            <p className='mt-10 text-[#969696] text-center font-bold'>Choose Account Type and Enter the Credentials</p>
+            {/* <p className='mt-10 text-[#969696] text-center font-bold'>Choose Account Type and Enter the Credentials</p> */}
         </div>
         <div className='rounded-[20px] shadow-xl flex flex-col py-12 px-5'>
             <label className='mb-3 text-2xl font-semibold' htmlFor="">Email</label>

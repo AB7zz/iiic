@@ -1,12 +1,13 @@
 import React from 'react'
 import axios from 'axios'
-import {useLocation} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 import { CompanyContext } from '../../Context/CompanyContextProvider'
 
 const url = 'https://iiic-backend.herokuapp.com'
 //const url = 'http://localhost:5000'
 
 const Edit = () => {
+    const navigate = useNavigate()
     const {logo, companyDetail} = React.useContext(CompanyContext)
     const [edit, setEdit] = React.useState()
     const id = useLocation()
@@ -16,7 +17,7 @@ const Edit = () => {
         if(companyDetail.Interns[postId].edit == true){
             setEdit(companyDetail.Interns[postId])
         }else{
-            window.location.replace('/dashboard/internship/checkStatus')
+            window.location.replace('/iiic/dashboard/internship/checkStatus')
         }
       }
     }, [])
@@ -37,7 +38,7 @@ const Edit = () => {
                 }
             })
             if(res.data.success == true){
-                window.location.replace('/dashboard/successfulUpload')
+                window.location.replace('/iiic/dashboard/successfulUpload')
             }
         }catch(error){
             console.log('Error 5: ', error)

@@ -1,5 +1,6 @@
 import React from 'react'
 import cusat from '../../../assets/cusat.png'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
   return (
@@ -9,7 +10,7 @@ const Hero = () => {
         <h1 className='text-black font-bold text-2xl md:text-7xl'>Top Talents Awaits </h1>
         <h1 className='text-4xl md:text-5xl mt-4 font-bold'>Find your dream team here</h1>
         <p className='mt-3 text-[#646464] text-sm'>Portal for Internships, Projects and Assistance</p>
-        <button className='mt-12 rounded font-semibold text-sm bg-blue-500 pl-4 pr-4 px-3 py-3 text-white'>Discover the Best Minds Here</button>
+        <button to='/login' className='mt-12 rounded font-semibold text-sm bg-blue-500 pl-4 pr-4 px-3 py-3 text-white'>Discover the Best Minds Here</button>
       </div>
       <div className='hidden md:block'>
         <img src={cusat} alt="cusat" />
