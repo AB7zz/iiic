@@ -1,14 +1,16 @@
 import React from 'react'
+import logo from '../../../assets/cusat-logo.png'
 
 const Footer = () => {
   return (
-    <div id="footer" className='bg-[#0B1525] h-[100%] pl-16 md:pl-52 py-20'>
+    <div id="footer" className='bg-[#0B1525] h-[100%] pl-16 md:pl-52 py-16'>
       <div className='grid grid-cols-2 md:grid-cols-4'>
-        <div>
-          <h1 className='text-2xl md:text-3xl text-white font-bold'>IIIC SOE</h1>
-          <p className='text-[#C2C2C2]'>Official Internship Portal for Students of
-School Of Engineering , CUSAT</p>
-        </div>
+          <img src={logo} alt="logo" className='h-[150px] mb-20 md:mb-0' />
+          <div>
+            <h1 className='text-2xl md:text-3xl text-white font-bold'>IIIC SOE</h1>
+            <p className='text-[#C2C2C2]'>Official Internship Portal for Students of
+  School Of Engineering , CUSAT</p>
+          </div>
         {/* <div>
           <h3 className='text-white text-xl md:text-2xl'>Features</h3>
           <ul>

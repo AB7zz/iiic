@@ -6,7 +6,7 @@ const Navbar2 = () => {
     const {isLogin, admin} = React.useContext(HomeContext)
     const [toggle, setToggle] = React.useState(false)
   return (  
-    <nav className='bg-white py-4 md:absolute'>
+    <nav className='bg-transparent py-4 md:absolute'>
         <div className="max-w-6xl mx-auto px-4">
             <div className="flex justify-between">
                 <div className="flex space-x-7">
@@ -22,7 +22,7 @@ const Navbar2 = () => {
                         <a href="#how" className="py-4 px-2 text-black-500 focus:border-b-4 focus:text-[#2979F2]  focus:border-[#2979F2] font-semibold hover:text-[#2979F2] transition duration-300">How it works</a>
                         <a href="#footer" className="py-4 px-2 text-black-500 focus:border-b-4 focus:text-[#2979F2]  focus:border-[#2979F2] font-semibold hover:text-[#2979F2] transition duration-300">Contact Us</a>
                         {(isLogin && !admin) 
-                            ? <><Link to="/dashboard/internship" className="ml-3 inline-block text-sm px-4 pr-8 pl-8 py-4 leading-none border rounded text-[#2979F2] font-semibold border-white hover:border-transparent bg-[#C2C2C2] bg-opacity-30 mt-4 lg:mt-0">Dashboard</Link></> 
+                            ? <><Link to="/dashboard" className="ml-3 inline-block text-sm px-4 pr-8 pl-8 py-4 leading-none border rounded text-[#2979F2] font-semibold border-white hover:border-transparent bg-[#C2C2C2] bg-opacity-30 mt-4 lg:mt-0">Dashboard</Link></> 
                         
                             : (isLogin && admin) 
                             ? <><Link to="/admin" className="ml-3 inline-block text-sm px-4 pr-8 pl-8 py-4 leading-none border rounded text-[#2979F2] font-semibold border-white hover:border-transparent bg-[#C2C2C2] bg-opacity-30 mt-4 lg:mt-0">Admin Panel</Link></> 
@@ -56,7 +56,7 @@ const Navbar2 = () => {
                 <li><a href="#how" className="block text-sm px-2 py-4 text-black transition duration-300 font-semibold">How it works</a></li>
                 <li><a href='#footer' className="block text-sm px-2 py-4 text-black transition duration-300 font-semibold">Contact Us</a></li>
                 {(isLogin && !admin) 
-                    ? <><Link to="/dashboard/internship" className="ml-3 inline-block text-sm px-4 pr-8 pl-8 py-4 leading-none border rounded text-[#2979F2] font-semibold border-white hover:border-transparent bg-[#C2C2C2] bg-opacity-30 mt-4 lg:mt-0">Dashboard</Link></> 
+                    ? <><Link to="/dashboard" className="ml-3 inline-block text-sm px-4 pr-8 pl-8 py-4 leading-none border rounded text-[#2979F2] font-semibold border-white hover:border-transparent bg-[#C2C2C2] bg-opacity-30 mt-4 lg:mt-0">Dashboard</Link></> 
                 
                     : (isLogin && admin) 
                     ? <><Link to="/admin" className="ml-3 inline-block text-sm px-4 pr-8 pl-8 py-4 leading-none border rounded text-[#2979F2] font-semibold border-white hover:border-transparent bg-[#C2C2C2] bg-opacity-30 mt-4 lg:mt-0">Admin Panel</Link></> 

@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import {useLocation, useNavigate} from 'react-router-dom'
 import { CompanyContext } from '../../Context/CompanyContextProvider'
+import CircularProgress from '@mui/material/CircularProgress'
 
 const url = 'https://iiic-backend.herokuapp.com'
 //const url = 'http://localhost:5000'
@@ -10,14 +11,17 @@ const Edit = () => {
     const navigate = useNavigate()
     const {logo, companyDetail} = React.useContext(CompanyContext)
     const [edit, setEdit] = React.useState()
+    const [clicked, setClicked] = React.useState(false)
+    const [type, setType] = React.useState('')
     const id = useLocation()
-    const postId = id.pathname.split('/')[5]
+    const postId = id.pathname.split('/')[4]
     React.useEffect(() => {
       if(companyDetail){
         if(companyDetail.Interns[postId].edit == true){
             setEdit(companyDetail.Interns[postId])
+            setType(companyDetail.Interns[postId].type || 'internship')
         }else{
-            window.location.replace('/iiic/dashboard/internship/checkStatus')
+            window.location.replace('/iiic/dashboard/checkStatus')
         }
       }
     }, [])
@@ -29,9 +33,9 @@ const Edit = () => {
 
     const editForm = async(e) => {
         e.preventDefault()
-        console.log(edit)
+        setClicked(true)
         try{
-            const res = await axios.post(`${url}/api/editIntern`, edit, {
+            const res = await axios.post(`${url}/api/editIntern`, {edit, type}, {
                 headers: {
                     Authorization: sessionStorage.getItem('user'),
                     "Content-Type": "application/json"
@@ -54,11 +58,19 @@ const Edit = () => {
         {edit && <><div className='flex flex-col w-[80%]'>
             <h3 className='text-2xl text-[#16255D] font-semibold mb-3'>Please Fill Your Details</h3>
             <div className='flex flex-col mb-5'>
-                <label className='text-[#A0A2A4] ' htmlFor="">Role Title</label>
+                <label className='text-[#A0A2A4] ' htmlFor="">Upload Type</label>
+                <select defaultValue={type} name="type" onChange={(e) => { setType(e.target.value) }} id="" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3'>
+                    <option value='internship'>Internship</option>
+                    <option value='job'>Job</option>
+                    <option value='project'>Project</option>
+                </select>
+            </div>
+            <div className='flex flex-col mb-5'>
+                {type == "internship" ? <label className='text-[#A0A2A4] ' htmlFor="">Role Title</label> : type == "job" ? <label className='text-[#A0A2A4] ' htmlFor="">Job Title</label> : <label className='text-[#A0A2A4] ' htmlFor="">Project Title</label>}
                 <input name='title' defaultValue={edit.title} onChange={setEditChange} type="text" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3' placeholder='Enter Title' />
             </div>
             <div className='flex flex-col mb-5'>
-                <label className='text-[#A0A2A4] ' htmlFor="">Role Description</label>
+                {type == "internship" ? <label className='text-[#A0A2A4] ' htmlFor="">Role Description</label> : type == "job" ? <label className='text-[#A0A2A4] ' htmlFor="">Job Description</label> : <label className='text-[#A0A2A4] ' htmlFor="">Project Description</label>}
                 <textarea name='desc' defaultValue={edit.desc} onChange={setEditChange} type="text" className='h-[250px] border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3' placeholder='Enter Description'></textarea>
             </div>
             <div className='flex flex-col mb-5'>
@@ -66,7 +78,7 @@ const Edit = () => {
                 <input name='skills' defaultValue={edit.skills} onChange={setEditChange} type="text" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3' placeholder='Enter Skills' />
             </div>
             <div className='flex flex-col mb-5'>
-              <label className='text-[#A0A2A4] ' htmlFor="">How many interns from each department?</label>
+                {type == "internship" ? <label className='text-[#A0A2A4] ' htmlFor="">How many interns from each department?</label> : type == "job" ? <label className='text-[#A0A2A4] ' htmlFor="">How many employees from each department?</label> : <label className='text-[#A0A2A4] ' htmlFor="">How many team members from each department?</label>}
               <div className='flex mb-5'>
                   <input name='cs' defaultValue={edit.cs} onChange={setEditChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/4 mr-3'/>
                   <p>from Computer Science</p>
@@ -81,7 +93,7 @@ const Edit = () => {
               </div>
               <div className='flex mb-5'>
                   <input name='ec' defaultValue={edit.ec} onChange={setEditChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/4 mr-3'/>
-                  <p>from Electrnoics & Communication</p>
+                  <p>from Electronics & Communication</p>
               </div>
               <div className='flex mb-5'>
                   <input name='sf' defaultValue={edit.sf} onChange={setEditChange} type="number" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-1 w-1/4 mr-3'/>
@@ -110,19 +122,23 @@ const Edit = () => {
                     <option value='6 months'>6 months</option>
                 </select>
             </div>
-            <div className='flex flex-col mb-5'>
+            {(type == "internship" || type == "job") && <div className='flex flex-col mb-5'>
                 <label className='text-[#A0A2A4]' htmlFor="">Remote Work Policy</label>
                 <select name="workpolicy" defaultValue={edit.workpolicy} onChange={setEditChange} id="" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3'>
                     <option value='On site' selected>On site</option>
                     <option value='Remote'>Remote</option>
                     <option value='Hybrid'>Hybrid</option>
                 </select>
-            </div>
+            </div>}
             <div className='flex flex-col mb-5'>
                 <label className='text-[#A0A2A4] ' htmlFor="">Stipend (if any)</label>
                 <input name='stipend' defaultValue={edit.stipend} onChange={setEditChange} type="text" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3' placeholder='Enter Stipend' />
             </div>
-            <button onClick={editForm} className='text-white bg-blue-500 px-10 py-3 text-center rounded-[12px]'>Confirm Edits</button>
+            <div className='flex flex-col mb-5'>
+                <label className='text-[#A0A2A4] ' htmlFor="">Contact no.</label>
+                <input name='phone' defaultValue={edit.phone} onChange={setEditChange} type="text" className='border border-[#A0A2A4] focus:border-[#A0A2A4] rounded-[12px] p-3' placeholder='Enter Stipend' />
+            </div>
+            {clicked ? <button onClick={editForm} className='text-white bg-blue-500 px-10 py-3 text-center rounded-[12px]'><CircularProgress color='inherit' /></button> : <button onClick={editForm} className='text-white bg-blue-500 px-10 py-3 text-center rounded-[12px]'>Confirm Edits</button>}
           </div></>}
       </div>
     </>

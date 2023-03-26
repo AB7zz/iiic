@@ -12,6 +12,7 @@ export const CompanyContextProvider = ({children}) => {
   const [companyDetail, setCompany] = React.useState(null)
   const [totalPosts, setTotal] = React.useState()
   const [totalVerified, setTotalVerified] = React.useState()
+  const [edit, setEdit] = React.useState()
   const [logo, setLogo] = React.useState(null)
   React.useEffect(() => {
     const firebaseConfig = {
@@ -63,6 +64,9 @@ export const CompanyContextProvider = ({children}) => {
         if(res.data.verified){
           setTotalVerified(res.data.verified)
         }
+        if(res.data.edit){
+          setEdit(res.data.edit)
+        }
       } catch (error) {
         
       }
@@ -75,7 +79,8 @@ export const CompanyContextProvider = ({children}) => {
       companyDetail,
       totalPosts,
       totalVerified,
-      logo
+      logo,
+      edit
     }}>
       {children}
     </CompanyContext.Provider>

@@ -33,7 +33,7 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between flex-wrap bg-transparent pt-6 pb-6 pl-24 pr-8 ">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
-        <Link to="/dashboard/internship" className="font-bold text-2xl tracking-tight text-[#16255D]">IIIC SOE</Link>
+        <Link to="/dashboard" className="font-bold text-2xl tracking-tight text-[#16255D]">IIIC SOE</Link>
       </div>
       <div className="block lg:hidden">
         <button className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
@@ -42,10 +42,10 @@ const Navbar = () => {
       </div>
       <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto justify-around">
         <div className="text-sm lg:flex-grow">
-          <Link to='/dashboard/internship' className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-black hover:text-[#2979F2] focus:text-[#2979F2] mr-4">
+          <Link to='/dashboard' className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-black hover:text-[#2979F2] focus:text-[#2979F2] mr-4">
             Dashboard
           </Link>
-          <Link to='/dashboard/internship/checkStatus' className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-black hover:text-[#2979F2] focus:text-[#2979F2] mr-4">
+          <Link to='/dashboard/checkStatus' className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-black hover:text-[#2979F2] focus:text-[#2979F2] mr-4">
             My Posts
           </Link>
           {/* <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 font-semibold text-black hover:text-[#2979F2] focus:text-[#2979F2] mr-4">

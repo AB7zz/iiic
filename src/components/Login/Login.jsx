@@ -29,7 +29,7 @@ const Login = () => {
     if(res.data.status == true){
         window.location.replace('/iiic/admin')
     }else{
-      window.location.replace('/iiic/dashboard/internship')
+      window.location.replace('/iiic/dashboard')
     }
   }
   const submitLogin = async() => {
@@ -49,7 +49,7 @@ const Login = () => {
   }
   React.useEffect(() =>{
     if(sessionStorage.getItem('user')){
-      window.location.replace('/iiic/dashboard/internship')
+      window.location.replace('/iiic/dashboard')
     }
     const firebaseConfig = {
       apiKey: "AIzaSyBAVeMwDYCI2sQ6ODZ0Mt7V9TgmkEqAyJQ",
@@ -82,7 +82,7 @@ const Login = () => {
             <input onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' type="password" name="pass" placeholder='Enter Password' />
             
             {/* <p className='font-semibold mb-4'>Do not have an account? <Link to='/register' className='text-blue-500'>Create one</Link></p> */}
-            <button onClick={submitLogin} to='/dashboard/internship' className='w-[80%] bg-blue-500 text-white px-10 py-3 font-semibold rounded text-center'>LOGIN</button>
+            <button onClick={submitLogin} to='/dashboard' className='w-[80%] bg-blue-500 text-white px-10 py-3 font-semibold rounded text-center'>LOGIN</button>
         </div>  
       </div>
     </div>

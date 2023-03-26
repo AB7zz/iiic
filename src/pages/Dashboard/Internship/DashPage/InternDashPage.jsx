@@ -33,7 +33,7 @@ const InternDashPage = () => {
     <>
       {/* <Navbar/> */}
       <Navbar2/>
-      <Options/>
+      {/* <Options/> */}
       <div className='grid grid-cols-1 md:grid-cols-3'>
         <Company/>
         <InternButtons/>

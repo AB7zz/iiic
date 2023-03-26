@@ -8,7 +8,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import {ref, uploadBytes, getStorage} from 'firebase/storage'
 
 const url = 'https://iiic-backend.herokuapp.com'
-// const url = 'http://localhost:5000'
+//const url = 'http://localhost:5000'
 
 const Register = () => {
   const [logo, setLogo] = React.useState(null)
@@ -57,7 +57,8 @@ const Register = () => {
                 console.log(user.accessToken)
                 const res = await axios.post(`${url}/api/register`, {account, type}, {
                     headers: {
-                        Authorization: `${user.accessToken}`
+                        Authorization: sessionStorage.getItem('user')
+                        // Authorization: `${user.accessToken}`
                     }
                 })
                 if(res.data.success == true){
@@ -67,6 +68,7 @@ const Register = () => {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                alert(errorMessage)
                 console.log(errorCode, errorMessage)
             });
     }
@@ -88,10 +90,10 @@ const Register = () => {
             </select>
             
             <label className='mb-3 text-2xl font-semibold' htmlFor="">Email</label>
-            <input onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' type="email" name="email" placeholder='Enter Email' />
+            <input onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' type="email" name="email" placeholder='Enter Email' required/>
             
             <label className='mb-3 text-2xl font-semibold' htmlFor="">Password</label>
-            <input onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' type="password" name="pass" placeholder='Enter Password' />
+            <input onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' type="password" name="pass" placeholder='Enter Password' required/>
 
             {(type != "company") && <><label className='mb-3 text-2xl font-semibold' htmlFor="">Department</label>
             <select onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' name="dept" id="" required>
@@ -107,20 +109,23 @@ const Register = () => {
             </select></>}
                        
             {(type != "admin") && <><label className='mb-3 text-2xl font-semibold' htmlFor="">Name of Company</label>
-            <input onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' type="text" name="company" placeholder='Enter Name' />
+            <input onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' type="text" name="company" placeholder='Enter Name' required/>
             
             <label className='mb-3 text-2xl font-semibold' htmlFor="">Industry</label>
-            <select onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' name="industry" id="">
-              <option value="none1">Selection Industry</option>
-              <option value="none2">Selection Industry</option>
-              <option value="none3">Selection Industry</option>
+            <select onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' name="industry" id="" required>
+              <option value="none">Selection Industry</option>
+              <option value="Computer Science and Information Technology">Computer Science and Information Technology</option>
+              <option value="Fire and Safety">Fire and Safety</option>
+              <option value="Automotive">Automotive</option>
+              <option value="Civil Engineering">Civil Engineering</option>
+              <option value="Electrical and Electronics">Electrical and Electronics</option>
             </select>
             
             <label className='mb-3 text-2xl font-semibold' htmlFor="">Description of your company</label>
-            <textarea onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' type="text" name="desc" placeholder='Enter Description' />
+            <textarea onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' type="text" name="desc" placeholder='Enter Description' required/>
             
             <label className='mb-3 text-2xl font-semibold' htmlFor="">Upload Logo</label>
-            <input onChange={e => setLogo(e.target.files[0])} className='mb-5' type="file" name="logo" id="" /></>}
+            <input onChange={e => setLogo(e.target.files[0])} className='mb-5' type="file" name="logo" id="" required/></>}
             
             <button onClick={submitRegister} className='w-[80%] bg-blue-500 text-white px-10 py-3 font-semibold rounded text-center'>REGISTER</button>
         </div>  

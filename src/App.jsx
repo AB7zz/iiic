@@ -22,6 +22,10 @@ import Successful from './components/Dashboard/Upload/Successful/Successful'
 
 import AdminPage from './pages/Admin/AdminPage'
 import InternEditPage from './pages/Dashboard/Internship/EditPage/InternEditPage'
+import ViewPage from './pages/Admin/ViewPage'
+import Logs from './components/Admin/Logs'
+import MessagesPage from './pages/Dashboard/Internship/Messages/MessagesPage'
+import AdminMessagesPage from './pages/Admin/AdminMessagesPage'
 
 function App() {
   return (
@@ -34,24 +38,24 @@ function App() {
 
 
           {/* Dashboard  */}
-          <Route path='/dashboard/internship' element={<InternDashPage/>} />
+          <Route path='/dashboard' element={<InternDashPage/>} />
           <Route path='/dashboard/job' element={<JobDashPage/>} />
           <Route path='/dashboard/project' element={<ProjectDashPage/>} />
           {/* Dashboard  */}
 
 
           {/* Upload  */}
-          <Route path='/dashboard/internship/upload' element={<InternUploadPage/>} />
-          <Route path='/dashboard/job/upload' element={<JobUploadPage/>} />
-          <Route path='/dashboard/project/upload' element={<ProjectUploadPage/>} />
+          <Route path='/dashboard/upload' element={<InternUploadPage/>} />
+          {/* <Route path='/dashboard/job/upload' element={<JobUploadPage/>} />
+          <Route path='/dashboard/project/upload' element={<ProjectUploadPage/>} /> */}
           <Route path='/dashboard/successfulUpload' element={<Successful/>} />
           {/* Upload  */}
 
 
           {/* Check Status  */}
-          <Route path='/dashboard/internship/checkStatus' element={<InternStatusPage/>} />
-          <Route path='/dashboard/job/checkStatus' element={<JobStatusPage/>} />
-          <Route path='/dashboard/project/checkStatus' element={<ProjectStatusPage/>} />
+          <Route path='/dashboard/checkStatus' element={<InternStatusPage/>} />
+          {/* <Route path='/dashboard/job/checkStatus' element={<JobStatusPage/>} />
+          <Route path='/dashboard/project/checkStatus' element={<ProjectStatusPage/>} /> */}
           {/* Check Status  */}
 
 
@@ -63,8 +67,24 @@ function App() {
 
 
           {/* Edit  */}
-          <Route path='/dashboard/internship/edit/:email/:id' element={<InternEditPage/>} />
+          <Route path='/dashboard/edit/:email/:id' element={<InternEditPage/>} />
           {/* Edit  */}
+
+          {/* View  */}
+          <Route path='/admin/uploads/view/:email/:id' element={<ViewPage/>} />
+          {/* View  */}
+
+          {/* Logs  */}
+          <Route path='/admin/logs/:email/:id' element={<Logs/>} />
+          {/* Logs  */}
+
+          {/* Messages  */}
+          <Route path='/dashboard/messages' element={<MessagesPage/>} />
+          {/* Messages  */}
+
+          {/* Admin Messages  */}
+          <Route path='/admin/messages' element={<AdminMessagesPage/>} />
+          {/* Admin Messages  */}
 
           <Route path='/admin' element={<AdminPage/>} />
           <Route path='/admin/internship' element={<AdminPage/>} />

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { getAuth, signOut } from "firebase/auth";
 import HomeIcon from '@mui/icons-material/Home';
 import {initializeApp} from 'firebase/app'
+import ChatIcon from '@mui/icons-material/Chat';
 
 const Navbar2 = () => {
     const [toggle, setToggle] = React.useState(false)
@@ -36,13 +37,14 @@ const Navbar2 = () => {
                 <div className="flex space-x-7">
                     <div>
                         <a href="#" className="flex items-center py-4 px-2">
-                            <Link to="/dashboard/internship" className="font-bold text-2xl tracking-tight text-[#16255D]">IIIC SOE</Link>
+                            <Link to="/dashboard" className="font-bold text-2xl tracking-tight text-[#16255D]">IIIC SOE</Link>
                         </a>
                     </div>
                     <div className="hidden md:flex items-center ">
-                        <Link to='/dashboard/internship' className="py-4 px-2 focus:text-[#2979F2] focus:border-b-4 focus:border-[#2979F2] font-semibold ">Dashboard</Link>
-                        <Link to='/dashboard/internship/checkStatus' className="py-4 px-2 text-black-500 focus:border-b-4 focus:text-[#2979F2]  focus:border-[#2979F2] font-semibold hover:text-[#2979F2] transition duration-300">My Posts</Link>
-                        <a href="#" className="py-4 px-2 text-black-500 focus:border-b-4 focus:text-[#2979F2]  focus:border-[#2979F2] font-semibold hover:text-[#2979F2] transition duration-300">Profile</a>
+                        <Link to='/dashboard/messages'><ChatIcon className='text-black !text-4xl mr-5' /></Link>
+                        <Link to='/dashboard' className="py-4 px-2 focus:text-[#2979F2] focus:border-b-4 focus:border-[#2979F2] font-semibold ">Dashboard</Link>
+                        <Link to='/dashboard/checkStatus' className="py-4 px-2 text-black-500 focus:border-b-4 focus:text-[#2979F2]  focus:border-[#2979F2] font-semibold hover:text-[#2979F2] transition duration-300">My Posts</Link>
+                        {/* <a href="#" className="py-4 px-2 text-black-500 focus:border-b-4 focus:text-[#2979F2]  focus:border-[#2979F2] font-semibold hover:text-[#2979F2] transition duration-300">Profile</a> */}
                         {/* <a href="#" className="py-4 px-2 text-black-500 focus:border-b-4 focus:text-[#2979F2]  focus:border-[#2979F2] font-semibold hover:text-[#2979F2] transition duration-300">Reports</a> */}
                         <button onClick={clickSignOut} to="/login" className="mr-5 inline-block text-sm px-4 pr-8 pl-8 py-4 leading-none border rounded text-[#2979F2] font-semibold border-white hover:border-transparent bg-[#C2C2C2] bg-opacity-30 mt-4 lg:mt-0">Log Out</button>
                         <Link to='/' className='ml-auto py-5 px-4 text-white bg-[#0A043C] rounded-[15px] font-semibold'>Home <HomeIcon/> </Link>
@@ -63,15 +65,16 @@ const Navbar2 = () => {
                     >
                         <path d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
-                </button>
+                    </button>
                 </div>
             </div>
         </div>
         {toggle && <div className="mobile-menu">
             <ul className="mb-12 pl-4">
-                <li className="active"><Link to='/dashboard/internship' className="block text-sm px-2 py-4 text-black font-semibold">Dashboard</Link></li>
-                <li><Link to='/dashboard/internship/checkStatus' className="block text-sm px-2 py-4 text-black transition duration-300 font-semibold">My Posts</Link></li>
-                <li><a className="block text-sm px-2 py-4 text-black transition duration-300 font-semibold">Profile</a></li>
+                <li><Link to='/dashboard/messages'><ChatIcon className='text-black !text-4xl mr-5' /></Link></li>
+                <li className="active"><Link to='/dashboard' className="block text-sm px-2 py-4 text-black font-semibold">Dashboard</Link></li>
+                <li><Link to='/dashboard/checkStatus' className="block text-sm px-2 py-4 text-black transition duration-300 font-semibold">My Posts</Link></li>
+                {/* <li><a className="block text-sm px-2 py-4 text-black transition duration-300 font-semibold">Profile</a></li> */}
                 {/* <li><a className="block text-sm px-2 py-4 text-black transition duration-300 font-semibold">Reports</a></li> */}
                 <li><button onClick={clickSignOut} to="/login" className="mb-12 mr-5 inline-block text-sm px-4 pr-8 pl-8 py-4 leading-none border rounded text-[#2979F2] font-semibold border-white hover:border-transparent bg-[#C2C2C2] bg-opacity-30 mt-4 lg:mt-0">Log Out</button></li>
                 <li><Link to='/' className='ml-auto py-5 px-4 text-white bg-[#0A043C] rounded-[15px] font-semibold'>Home <HomeIcon/> </Link></li>
