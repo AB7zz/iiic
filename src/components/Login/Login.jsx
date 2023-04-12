@@ -6,8 +6,8 @@ import {initializeApp} from 'firebase/app'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import axios from 'axios'
 
-const url = 'https://iiic-backend.herokuapp.com'
-//const url = 'http://localhost:5000'
+//const url = 'https://iiic-backend.herokuapp.com'
+const url = 'http://localhost:5000'
 
 const Login = () => {
   const navigate = useNavigate()

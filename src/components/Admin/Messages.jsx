@@ -3,8 +3,8 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import axios from 'axios'
 
 
-const url = 'https://iiic-backend.herokuapp.com'
-//const url = 'http://localhost:5000'
+//const url = 'https://iiic-backend.herokuapp.com'
+const url = 'http://localhost:5000'
 
 const Messages = () => {
   const [messages, setMessages] = React.useState()

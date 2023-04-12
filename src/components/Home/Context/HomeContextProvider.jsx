@@ -1,8 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 
-const url = 'https://iiic-backend.herokuapp.com'
-//const url = 'http://localhost:5000'
+//const url = 'https://iiic-backend.herokuapp.com'
+const url = 'http://localhost:5000'
 
 export const HomeContext = React.createContext()
 

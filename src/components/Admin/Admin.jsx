@@ -1,15 +1,14 @@
 import React from 'react'
 import axios from 'axios'
 import Options from './Options'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import SendIcon from '@mui/icons-material/Send'
 import CircularProgress from '@mui/material/CircularProgress';
 
-const url = 'https://iiic-backend.herokuapp.com'
-//const url = 'http://localhost:5000'
+//const url = 'https://iiic-backend.herokuapp.com'
+const url = 'http://localhost:5000'
 
 const Admin = () => {
-    const navigate = useNavigate()
     const [posts, setPosts] = React.useState(null)
     const [note, setNote] = React.useState()
     const [message, setMessage] = React.useState()
@@ -69,7 +68,7 @@ const Admin = () => {
                 </div>
             </div>
             <div className='flex flex-col p-5'>
-                {posts.length != 0 ? sortedPosts.map(post => {
+                {posts && posts.length != 0 ? sortedPosts.map(post => {
                     const handleVerify = async() => {
                         setVerify(true)
                         try {
