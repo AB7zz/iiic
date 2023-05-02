@@ -8,7 +8,7 @@ import ChatIcon from '@mui/icons-material/Chat';
 
 
 
-//const url = 'https://iiic-backend.herokuapp.com'
+//const url = 'http://iiic-backend.herokuapp.com'
 const url = 'http://localhost:5000'
 
 const Navbar2 = () => {

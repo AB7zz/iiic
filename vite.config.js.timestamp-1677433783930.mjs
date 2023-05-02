@@ -1,9 +1,9 @@
 // vite.config.js
-import { defineConfig } from "file:///D:/xampp/htdocs/iiic/frontend/node_modules/vite/dist/node/index.js";
-import react from "file:///D:/xampp/htdocs/iiic/frontend/node_modules/@vitejs/plugin-react/dist/index.mjs";
+import { defineConfig } from "file:///D:/xampp/htdocs/frontend/node_modules/vite/dist/node/index.js";
+import react from "file:///D:/xampp/htdocs/frontend/node_modules/@vitejs/plugin-react/dist/index.mjs";
 var vite_config_default = defineConfig({
   plugins: [react()],
-  base: "/iiic/"
+  base: "/"
 });
 export {
   vite_config_default as default

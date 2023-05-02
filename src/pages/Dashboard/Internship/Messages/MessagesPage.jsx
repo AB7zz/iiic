@@ -3,7 +3,7 @@ import axios from 'axios'
 import Messages from '../../../../components/Dashboard/Messages/Messages'
 
 
-//const url = 'https://iiic-backend.herokuapp.com'
+//const url = 'http://iiic-backend.herokuapp.com'
 const url = 'http://localhost:5000'
 
 const MessagesPage = () => {

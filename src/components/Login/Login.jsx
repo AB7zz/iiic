@@ -6,7 +6,7 @@ import {initializeApp} from 'firebase/app'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import axios from 'axios'
 
-//const url = 'https://iiic-backend.herokuapp.com'
+//const url = 'http://iiic-backend.herokuapp.com'
 const url = 'http://localhost:5000'
 
 const Login = () => {
@@ -82,7 +82,7 @@ const Login = () => {
             <input onChange={setAccountChange} className='mb-5 border-b-2 border-[#C2C2C2]' type="password" name="pass" placeholder='Enter Password' />
             
             {/* <p className='font-semibold mb-4'>Do not have an account? <Link to='/register' className='text-blue-500'>Create one</Link></p> */}
-            <button onClick={submitLogin} to='/dashboard' className='w-[80%] bg-blue-500 text-white px-10 py-3 font-semibold rounded text-center'>LOGIN</button>
+            <button onClick={submitLogin} to='/dashboard' className='w-[80%] bg-blue-500 hover:bg-[#0877A3] text-white px-10 py-3 font-semibold rounded text-center'>LOGIN</button>
         </div>  
       </div>
     </div>

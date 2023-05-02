@@ -4,7 +4,7 @@ import { CompanyContext } from '../../Context/CompanyContextProvider'
 import { useNavigate } from 'react-router-dom'
 import CircularProgress from '@mui/material/CircularProgress'
 
-//const url = 'https://iiic-backend.herokuapp.com'
+//const url = 'http://iiic-backend.herokuapp.com'
 const url = 'http://localhost:5000'
 
 const Upload = () => {

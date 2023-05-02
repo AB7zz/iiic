@@ -4,7 +4,7 @@ import {useLocation, useNavigate} from 'react-router-dom'
 import { CompanyContext } from '../../Context/CompanyContextProvider'
 import CircularProgress from '@mui/material/CircularProgress'
 
-//const url = 'https://iiic-backend.herokuapp.com'
+//const url = 'http://iiic-backend.herokuapp.com'
 const url = 'http://localhost:5000'
 
 const Edit = () => {

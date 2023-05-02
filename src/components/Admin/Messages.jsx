@@ -3,7 +3,7 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import axios from 'axios'
 
 
-//const url = 'https://iiic-backend.herokuapp.com'
+//const url = 'http://iiic-backend.herokuapp.com'
 const url = 'http://localhost:5000'
 
 const Messages = () => {

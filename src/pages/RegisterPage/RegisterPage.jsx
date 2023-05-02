@@ -3,7 +3,7 @@ import Register from '../../components/Register/Register';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 
-//const url = 'https://iiic-backend.herokuapp.com'
+//const url = 'http://iiic-backend.herokuapp.com'
 const url = 'http://localhost:5000'
 
 const RegisterPage = () => {

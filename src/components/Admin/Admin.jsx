@@ -1,15 +1,15 @@
 import React from 'react'
 import axios from 'axios'
-import Options from './Options'
 import { Link } from 'react-router-dom'
 import SendIcon from '@mui/icons-material/Send'
 import CircularProgress from '@mui/material/CircularProgress';
 
-//const url = 'https://iiic-backend.herokuapp.com'
+//const url = 'http://iiic-backend.herokuapp.com'
 const url = 'http://localhost:5000'
 
 const Admin = () => {
     const [posts, setPosts] = React.useState(null)
+    const [loading, setLoading] = React.useState(false)
     const [note, setNote] = React.useState()
     const [message, setMessage] = React.useState()
     const [verify, setVerify] = React.useState(false)
@@ -27,7 +27,7 @@ const Admin = () => {
             }
         }
         const fetchPosts = async() => {
-            const res = await axios.get(`${url}/api/getPosts/internship`,{
+            const res = await axios.get(`${url}/api/getPosts/all`,{
                 headers:{
                     Authorization: sessionStorage.getItem('user')
                 }
@@ -40,6 +40,7 @@ const Admin = () => {
         fetchPosts()
     }, [])
     const fetchPosts = async(type) => {
+        setLoading(true)
         const res = await axios.get(`${url}/api/getPosts/${type}`,{
             headers:{
                 Authorization: sessionStorage.getItem('user')
@@ -48,6 +49,7 @@ const Admin = () => {
         if(res.data.posts){
             setPosts(res.data.posts)
             console.log(res.data.posts)
+            setLoading(false)
         }
     }
     let sortedPosts
@@ -62,12 +64,13 @@ const Admin = () => {
         <>
             <div className='w-[100%] md:w-[30%] m-auto'>
                 <div className='rounded-[30px] px-10 py-4 align-center flex justify-between shadow-xl'>
+                    <Link onClick={() =>fetchPosts('all')} className='options hover:text-blue-500 focus:text-blue-500'>All</Link>
                     <Link onClick={() =>fetchPosts('internship')} className='options hover:text-blue-500 focus:text-blue-500'>Internship</Link>
                     <Link onClick={() =>fetchPosts('job')} className='options hover:text-blue-500 focus:text-blue-500'>Jobs</Link>
                     <Link onClick={() =>fetchPosts('project')} className='options hover:text-blue-500 focus:text-blue-500'>Projects</Link>
                 </div>
             </div>
-            <div className='flex flex-col p-5'>
+            {!loading ? <div className='flex flex-col p-5'>
                 {posts && posts.length != 0 ? sortedPosts.map(post => {
                     const handleVerify = async() => {
                         setVerify(true)
@@ -177,7 +180,7 @@ const Admin = () => {
                         </div>
                     </div>
                 )}) : <p className='text-center text-black text-3xl'>No posts available</p>}
-            </div>
+            </div> : <p className='text-center text-black text-3xl mt-10'>Loading...</p>}
         </>
     )
 }

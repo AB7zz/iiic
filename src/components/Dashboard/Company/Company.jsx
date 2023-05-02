@@ -1,7 +1,7 @@
 import React from 'react'
 import { CompanyContext } from '../Context/CompanyContextProvider'
 
-//const url = 'https://iiic-backend.herokuapp.com'
+//const url = 'http://iiic-backend.herokuapp.com'
 const url = 'http://localhost:5000'
 
 const Company = () => {
