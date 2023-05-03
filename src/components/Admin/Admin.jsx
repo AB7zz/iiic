@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 import SendIcon from '@mui/icons-material/Send'
 import CircularProgress from '@mui/material/CircularProgress';
 
-const url = 'http://iiic-backend.herokuapp.com'
-//const url = 'http://localhost:5000'
+//const url = 'http://iiic-backend.herokuapp.com'
+const url = 'http://localhost:5000'
 
 const Admin = () => {
     const [posts, setPosts] = React.useState(null)

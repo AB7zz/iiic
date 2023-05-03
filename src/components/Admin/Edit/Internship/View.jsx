@@ -2,8 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import {useLocation} from 'react-router-dom'
 
-const url = 'http://iiic-backend.herokuapp.com'
-//const url = 'http://localhost:5000'
+//const url = 'http://iiic-backend.herokuapp.com'
+const url = 'http://localhost:5000'
 
 const View = () => {
     const [company, setCompany] = React.useState()
