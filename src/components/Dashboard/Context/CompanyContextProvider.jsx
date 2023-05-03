@@ -3,8 +3,8 @@ import axios from 'axios'
 import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage";
 import {initializeApp} from 'firebase/app'
 
-const url = 'http://iiic-backend.herokuapp.com'
-//const url = 'http://localhost:5000'
+//const url = 'http://iiic-backend.herokuapp.com'
+const url = 'http://localhost:5000'
 
 export const CompanyContext = React.createContext()
 

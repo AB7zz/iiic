@@ -5,8 +5,8 @@ import { useLocation } from 'react-router-dom'
 import HomeIcon from '@mui/icons-material/Home'
 import { Link } from 'react-router-dom'
 
-const url = 'http://iiic-backend.herokuapp.com'
-//const url = 'http://localhost:5000'
+//const url = 'http://iiic-backend.herokuapp.com'
+const url = 'http://localhost:5000'
 
 const Logs = () => {
     const [postLogs, setPostLogs] = React.useState()
