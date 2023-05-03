@@ -8,8 +8,8 @@ import ChatIcon from '@mui/icons-material/Chat';
 
 
 
-//const url = 'http://iiic-backend.herokuapp.com'
-const url = 'http://localhost:5000'
+const url = 'http://iiic-backend.herokuapp.com'
+//const url = 'http://localhost:5000'
 
 const Navbar2 = () => {
     const [toggle, setToggle] = React.useState(false)

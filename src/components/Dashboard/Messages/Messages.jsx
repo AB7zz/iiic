@@ -5,8 +5,8 @@ import Navbar from '../Upload/Navbar/Navbar'
 import CircularProgress from '@mui/material/CircularProgress'
 
 
-//const url = 'http://iiic-backend.herokuapp.com'
-const url = 'http://localhost:5000'
+const url = 'http://iiic-backend.herokuapp.com'
+//const url = 'http://localhost:5000'
 
 const Messages = () => {
   const [messages, setMessages] = React.useState()

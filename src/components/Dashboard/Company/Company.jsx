@@ -1,8 +1,8 @@
 import React from 'react'
 import { CompanyContext } from '../Context/CompanyContextProvider'
 
-//const url = 'http://iiic-backend.herokuapp.com'
-const url = 'http://localhost:5000'
+const url = 'http://iiic-backend.herokuapp.com'
+//const url = 'http://localhost:5000'
 
 const Company = () => {
   const {companyDetail, logo} = React.useContext(CompanyContext)
